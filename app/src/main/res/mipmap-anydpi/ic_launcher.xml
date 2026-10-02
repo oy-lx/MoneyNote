@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  设计稿是一张柔和的全幅位图，主体没有可以单色化的清晰轮廓：
+  用 R-G 通道阈值 + 从中心泛洪提取出的轮廓占自身包围盒 60%、填满可见区 44%，
+  且紧贴左/下边缘，本质上是一整块实心形状。
+  把它当作 monochrome 图层，Android 13+ 的主题图标会退化成一块几乎铺满的
+  纯色色块，比不提供主题图标更糟，所以这里显式不提供该图层并抑制对应检查。
+  若之后有了简化的单色标识，补一行 <monochrome android:drawable="..."/> 即可。
+-->
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MonochromeLauncherIcon">
+
+    <background android:drawable="@color/ic_launcher_background" />
+    <foreground android:drawable="@mipmap/ic_launcher_foreground" />
+</adaptive-icon>

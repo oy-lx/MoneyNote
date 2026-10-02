@@ -1,0 +1,25 @@
+# 统一换行符，避免 Windows 上提交后把 gradlew 变成 CRLF，
+# 导致 macOS / Linux / CI 上 "bad interpreter" 而无法执行。
+#
+# Git for Windows 的 core.autocrlf 默认是 true，会静默把文本文件转成 CRLF；
+# 这里的规则优先级高于该设置。
+
+* text=auto
+
+# Gradle / shell 脚本必须保持 LF
+gradlew text eol=lf
+*.sh    text eol=lf
+
+# Windows 批处理必须是 CRLF
+*.bat   text eol=crlf
+*.cmd   text eol=crlf
+
+# 二进制文件不做换行符转换
+*.jar       binary
+*.keystore  binary
+*.jks       binary
+*.png       binary
+*.webp      binary
+*.jpg       binary
+*.apk       binary
+*.aab       binary
